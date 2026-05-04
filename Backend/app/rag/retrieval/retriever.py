@@ -6,14 +6,10 @@ Hybrid retriever: combines vector search (MMR) + BM25 keyword search.
 Why hybrid?
   Pure vector search is semantic — it finds chunks with similar *meaning*.
   This works well for conceptual questions but fails for proper nouns,
-  acronyms, and exact terms like "FAST", "PPL", "22K-4416".
-
-  The problem: "FAST" (university acronym) and "fast" (adjective) produce
-  nearly identical embeddings. Vector search can't distinguish them.
+  acronyms, and exact terms.
 
   BM25 is a classic keyword ranking algorithm — it finds exact word matches
-  regardless of meaning. "FAST" in the query will always score high for
-  chunks containing the exact string "FAST".
+  regardless of meaning, guaranteeing exact-term recall.
 
   Hybrid = vector score + BM25 score combined via RRF (Reciprocal Rank Fusion).
   RRF merges two ranked lists into one without needing to normalize scores.
@@ -23,9 +19,8 @@ Why hybrid?
 
 BM25 limitation:
   BM25 needs all documents in memory as a list. We rebuild it from Chroma
-  on every retriever creation. This is fine for a learning project with
-  hundreds of chunks. For millions of chunks, you'd use a dedicated search
-  engine like Elasticsearch.
+  on every retriever creation. For millions of chunks, you'd use a dedicated
+  search engine like Elasticsearch.
 """
 
 import logging

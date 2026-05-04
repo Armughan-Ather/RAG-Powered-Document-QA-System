@@ -128,7 +128,7 @@ def format_documents_as_context(documents) -> str:
 #   connection that may not exist in the document. Rewriting it as
 #   "X Y connection context" retrieves the relevant chunks regardless.
 #
-#   The rewriter is document-agnostic — it works for CVs, contracts,
+#   The rewriter is document-agnostic — it works for contracts,
 #   research papers, medical reports, or any other document type.
 
 QUERY_REWRITE_PROMPT = ChatPromptTemplate.from_messages([

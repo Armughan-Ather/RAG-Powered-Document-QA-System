@@ -34,7 +34,7 @@ from app.core.exceptions import (
 from app.routes import document_routes, query_routes
 
 # ── Logging ───────────────────────────────────────────────────────────────────
-# Standard Python logging — simple and sufficient for a learning project.
+# Standard Python logging setup.
 
 logging.basicConfig(
     level=logging.INFO,
